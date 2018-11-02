@@ -1,5 +1,7 @@
 package com.blablacar.mower;
 
+import java.util.Objects;
+
 public class Orientation {
     public static final String NORTH = "N";
     public static final String SOUTH = "S";
@@ -18,5 +20,19 @@ public class Orientation {
 
     public String getDirection() {
         return direction;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        Orientation that = (Orientation) o;
+        return Objects.equals(direction, that.direction);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(direction);
     }
 }
