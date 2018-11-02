@@ -29,7 +29,7 @@ public class MowerShould {
 
     @Test
     public void understand_an_orientation() {
-        mower.moveTo(Orientation.NORTH);
+        mower.moveTo(Move.Front);
 
         Position expectedPosition = new Position(0, 1);
         assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
