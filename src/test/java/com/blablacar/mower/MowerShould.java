@@ -7,8 +7,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MowerShould {
 
-    private static final String NORTH = "N";
-
     private Mower mower;
 
     @Before
@@ -26,7 +24,7 @@ public class MowerShould {
 
     @Test
     public void understand_an_orientation() {
-        mower.moveTo(NORTH);
+        mower.moveTo(Orientation.NORTH);
 
         Position expectedPosition = new Position(0, 1);
         assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
