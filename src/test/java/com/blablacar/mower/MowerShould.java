@@ -1,18 +1,34 @@
 package com.blablacar.mower;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MowerShould {
 
+    private static final String NORTH = "N";
+
+    private Mower mower;
+
+    @Before
+    public void init() {
+        mower = new Mower();
+    }
+
     @Test
     public void have_a_position() {
-        Mower mower = new Mower();
-
         Position mowerPosition = mower.getPosition();
 
         assertThat(mowerPosition.getX()).isEqualTo(0);
         assertThat(mowerPosition.getY()).isEqualTo(0);
+    }
+
+    @Test
+    public void understand_an_orientation() {
+        mower.moveTo(NORTH);
+
+        Position expectedPosition = new Position(0, 1);
+        assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
     }
 }
