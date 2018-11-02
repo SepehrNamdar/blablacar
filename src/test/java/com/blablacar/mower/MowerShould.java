@@ -7,11 +7,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MowerShould {
 
+    private static final String NORTH = Orientation.NORTH;
+    private static final String EAST = Orientation.EAST;
+
     private Mower mower;
 
     @Before
     public void init() {
-        mower = new Mower(new Orientation(Orientation.NORTH));
+        mower = new Mower(Orientation.of(NORTH));
     }
 
     @Test
@@ -24,12 +27,12 @@ public class MowerShould {
 
     @Test
     public void have_an_orientation() {
-        assertThat(mower.getOrientation()).isEqualToComparingFieldByField(new Orientation(Orientation.NORTH));
+        assertThat(mower.getOrientation()).isEqualToComparingFieldByField(Orientation.of(NORTH));
     }
 
     @Test
     public void understand_an_orientation() {
-        mower.moveTo(new Move(Move.FRONT));
+        mower.moveTo(Move.to(Move.FRONT));
 
         Position expectedPosition = new Position(0, 1);
         assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
@@ -37,10 +40,10 @@ public class MowerShould {
 
     @Test
     public void turn_to_right_when_receive_right_command() {
-        mower.moveTo(new Move(Move.RIGHT));
+        mower.moveTo(Move.to(Move.RIGHT));
 
         Position expectedPosition = new Position(0, 0);
         assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
-        assertThat(mower.getOrientation()).isEqualTo(new Orientation(Orientation.EAST));
+        assertThat(mower.getOrientation()).isEqualTo(Orientation.of(EAST));
     }
 }

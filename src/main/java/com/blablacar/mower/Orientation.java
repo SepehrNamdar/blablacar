@@ -10,7 +10,11 @@ public class Orientation {
 
     private final String direction;
 
-    public Orientation(String direction) {
+    public static Orientation of(String direction) {
+        return new Orientation(direction);
+    }
+
+    private Orientation(String direction) {
         if (direction.equals(NORTH) || direction.equals(SOUTH) || direction.equals(EAST) || direction.equals(WEST)) {
             this.direction = direction;
         } else {
@@ -32,7 +36,6 @@ public class Orientation {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(direction);
     }
 }

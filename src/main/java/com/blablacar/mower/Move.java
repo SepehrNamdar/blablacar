@@ -11,7 +11,11 @@ public class Move {
         command = FRONT;
     }
 
-    public Move(String command) {
+    public static Move to(String command) {
+        return new Move(command);
+    }
+
+    private Move(String command) {
         if (command.equals(FRONT) || command.equals(RIGHT) || command.equals(LEFT)) {
             this.command = command;
         } else {

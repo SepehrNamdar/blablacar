@@ -18,7 +18,7 @@ public class Mower {
             this.position = new Position(0, 1);
         } else if (Move.RIGHT.equals(move.getCommand())) {
             this.position = new Position(0, 0);
-            this.orientation = new Orientation(Orientation.EAST);
+            this.orientation = Orientation.of(Orientation.EAST);
         }
     }
 
