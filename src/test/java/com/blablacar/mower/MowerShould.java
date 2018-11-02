@@ -11,7 +11,7 @@ public class MowerShould {
 
     @Before
     public void init() {
-        mower = new Mower();
+        mower = new Mower(Orientation.NORTH);
     }
 
     @Test
@@ -20,6 +20,11 @@ public class MowerShould {
 
         assertThat(mowerPosition.getX()).isEqualTo(0);
         assertThat(mowerPosition.getY()).isEqualTo(0);
+    }
+
+    @Test
+    public void have_an_orientation() {
+        assertThat(mower.getOrientation()).isEqualTo(Orientation.NORTH);
     }
 
     @Test

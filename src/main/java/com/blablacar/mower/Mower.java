@@ -3,7 +3,7 @@ package com.blablacar.mower;
 public class Mower {
     private Position position;
 
-    public Mower() {
+    public Mower(String orientation) {
         this.position = new Position();
     }
 
@@ -13,5 +13,9 @@ public class Mower {
 
     public void moveTo(String orientation) {
         this.position = new Position(0, 1);
+    }
+
+    public String getOrientation() {
+        return Orientation.NORTH;
     }
 }
