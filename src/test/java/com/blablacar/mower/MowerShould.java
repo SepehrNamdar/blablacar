@@ -83,7 +83,7 @@ public class MowerShould {
         assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
         assertThat(mower.getOrientation()).isEqualTo(NORTH_ORIENTATION);
 
-        /*startPosition = new Position(3, 3);
+        startPosition = new Position(3, 3);
         mower = new Mower(startPosition, EAST_ORIENTATION);
 
         mower.moveTo(FRONT);
@@ -99,7 +99,7 @@ public class MowerShould {
 
         expectedPosition = new Position(5, 1);
         assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
-        assertThat(mower.getOrientation()).isEqualTo(EAST_ORIENTATION);*/
+        assertThat(mower.getOrientation()).isEqualTo(EAST_ORIENTATION);
     }
 
 }
