@@ -3,6 +3,8 @@ package com.blablacar.mower;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.image.RasterOp;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MowerShould {
@@ -10,6 +12,7 @@ public class MowerShould {
     private static final Orientation NORTH_ORIENTATION = Orientation.of(Orientation.NORTH);
     private static final Orientation EAST_ORIENTATION = Orientation.of(Orientation.EAST);
     private static final Orientation WEST_ORIENTATION = Orientation.of(Orientation.WEST);
+    private static final Orientation SOUTH_ORIENTATION = Orientation.of(Orientation.SOUTH);
 
     private static final Move LEFT = Move.to(Move.LEFT);
     private static final Move RIGHT = Move.to(Move.RIGHT);
@@ -63,13 +66,40 @@ public class MowerShould {
 
     @Test
     public void understand_many_move_commands() {
+        Position startPosition = new Position(1, 2);
+        mower = new Mower(startPosition, NORTH_ORIENTATION);
+
+        mower.moveTo(LEFT);
+        mower.moveTo(FRONT);
+        mower.moveTo(LEFT);
+        mower.moveTo(FRONT);
+        mower.moveTo(LEFT);
+        mower.moveTo(FRONT);
+        mower.moveTo(LEFT);
+        mower.moveTo(FRONT);
+        mower.moveTo(FRONT);
+
+        Position expectedPosition = new Position(1, 3);
+        assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
+        assertThat(mower.getOrientation()).isEqualTo(NORTH_ORIENTATION);
+
+        /*startPosition = new Position(3, 3);
+        mower = new Mower(startPosition, EAST_ORIENTATION);
+
+        mower.moveTo(FRONT);
         mower.moveTo(FRONT);
         mower.moveTo(RIGHT);
         mower.moveTo(FRONT);
-        mower.moveTo(LEFT);
+        mower.moveTo(FRONT);
+        mower.moveTo(RIGHT);
+        mower.moveTo(FRONT);
+        mower.moveTo(RIGHT);
+        mower.moveTo(RIGHT);
+        mower.moveTo(FRONT);
 
-        Position expectedPosition = new Position(1, 1);
+        expectedPosition = new Position(5, 1);
         assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
-        assertThat(mower.getOrientation()).isEqualTo(NORTH_ORIENTATION);
+        assertThat(mower.getOrientation()).isEqualTo(EAST_ORIENTATION);*/
     }
+
 }
