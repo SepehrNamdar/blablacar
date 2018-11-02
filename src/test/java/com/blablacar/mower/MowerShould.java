@@ -60,4 +60,16 @@ public class MowerShould {
         assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
         assertThat(mower.getOrientation()).isEqualTo(WEST_ORIENTATION);
     }
+
+    @Test
+    public void understand_many_move_commands() {
+        mower.moveTo(FRONT);
+        mower.moveTo(RIGHT);
+        mower.moveTo(FRONT);
+        mower.moveTo(LEFT);
+
+        Position expectedPosition = new Position(1, 1);
+        assertThat(mower.getPosition()).isEqualToComparingFieldByField(expectedPosition);
+        assertThat(mower.getOrientation()).isEqualTo(NORTH_ORIENTATION);
+    }
 }

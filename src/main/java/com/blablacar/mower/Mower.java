@@ -15,13 +15,23 @@ public class Mower {
 
     public void moveTo(Move move) {
         if (Move.FRONT.equals(move.getCommand())) {
-            this.position = new Position(0, 1);
+            if(Orientation.of(Orientation.EAST).equals(orientation)) {
+                this.position = new Position(getPosition().getX() + 1, getPosition().getY());
+            } else {
+                this.position = new Position(getPosition().getX(), getPosition().getY() + 1);
+            }
         } else if (Move.RIGHT.equals(move.getCommand())) {
-            this.position = new Position(0, 0);
-            this.orientation = Orientation.of(Orientation.EAST);
+            if(Orientation.of(Orientation.NORTH).equals(orientation)) {
+                this.orientation = Orientation.of(Orientation.EAST);
+            }
+            this.position = new Position(getPosition().getX(), getPosition().getY());
         } else if (Move.LEFT.equals(move.getCommand())) {
-            this.position = new Position(0, 0);
-            this.orientation = Orientation.of(Orientation.WEST);
+            if(Orientation.of(Orientation.EAST).equals(orientation)) {
+                this.orientation = Orientation.of(Orientation.NORTH);
+            } else if (Orientation.of(Orientation.NORTH).equals(orientation)) {
+                this.orientation = Orientation.of(Orientation.WEST);
+            }
+            this.position = new Position(getPosition().getX(), getPosition().getY());
         }
     }
 
